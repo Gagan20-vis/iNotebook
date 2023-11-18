@@ -1,0 +1,14 @@
+const express = require('express');
+const router = express();
+const userController = require('../controllers/userController');
+const notesController = require('../controllers/notesController');
+const auth = require('../middleware/auth');
+router.use(express.json());
+router.post('/register', userController.register);
+router.post('/login', userController.login);
+router.post('/getUser', auth.isLogin, userController.getUser);
+router.get('/fetchNotes', auth.isLogin, notesController.fetchNotes);
+router.post('/addNotes', auth.isLogin, notesController.addNotes);
+router.put('/updateNotes/:id', auth.isLogin, notesController.updateNotes);
+router.delete('/deleteNotes/:id', auth.isLogin, notesController.deleteNotes);
+module.exports = router;
