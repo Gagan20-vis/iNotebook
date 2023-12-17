@@ -22,7 +22,7 @@ export default function Register() {
             const response = await fetch(`http://localhost:3000/register`, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name: user.name, email: user.email, password: user.password })
+                body: JSON.stringify({ name: user.user, email: user.email, password: user.password })
             })
             const json = await response.json();
             if (json.success) {
@@ -50,8 +50,8 @@ export default function Register() {
             <div className='container my-5' style={{ maxWidth: "500px" }}>
                 <form className="px-3 " style={{ borderRadius: '10px', boxShadow: 'rgb(0 0 0) 0px 0px 23px 0px', background: bg }} onSubmit={handleLogin}>
                     <div className="form-outline mb-4 pt-4">
-                        <input autoComplete="off" type="name" id="name" name="name" className="form-control" placeholder="Name" onChange={onChange} value={user.name} />
-                        <div id="nameHelp" class="form-text" style={{ color: "red" }}></div>
+                        <input autoComplete="off" type="name" id="user" name="user" className="form-control" placeholder="Name" onChange={onChange} value={user.user} />
+                        <div id="userHelp" class="form-text" style={{ color: "red" }}></div>
                     </div>
                     <div className="form-outline mb-4 py-2">
                         <input autoComplete="off" type="email" id="email" name="email" className="form-control" placeholder="Email address" onChange={onChange} value={user.email} />
